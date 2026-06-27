@@ -20,20 +20,16 @@ Une application web moderne en PHP (architecture MVC) pour la gestion et la rés
 
 ---
 
-## 🛠️ Prérequis
-
-- **PHP** : version 8.0 ou supérieure
-- **MySQL / MariaDB**
-- Un serveur web local (comme Apache via XAMPP/WampServer, ou le serveur intégré de PHP)
-
----
 
 ## 📦 Installation & Configuration
 
 1. **Cloner le projet** dans votre répertoire de travail local.
+    ```env
+    git clone
+   ```
 2. **Base de données** :
    - Créez une base de données MySQL (ex: `parking_db`).
-   - Importez le fichier [database.sql](file:///c:/ARTHUR/PROJET/app-gestion-parking/database.sql) pour créer la structure des tables et insérer les données initiales.
+   - Importez le fichier database.sql
 3. **Configuration de l'environnement** :
    - Créez un fichier `.env` à la racine du projet avec les informations de connexion :
      ```env
@@ -42,29 +38,3 @@ Une application web moderne en PHP (architecture MVC) pour la gestion et la rés
      DB_USER=votre_utilisateur
      DB_PASS=votre_mot_de_passe
      ```
-   - Renseignez les fichiers de configuration sous le dossier `config/` si nécessaire (`config.php`, `database.php`, `env.php`).
-4. **Lancement du serveur** :
-   - Vous pouvez lancer le serveur PHP intégré depuis la racine du projet :
-     ```bash
-     php -S localhost:8000
-     ```
-   - Ouvrez ensuite votre navigateur et accédez à `http://localhost:8000`.
-
----
-
-## 📂 Structure du Projet
-
-```text
-├── config/             # Fichiers de configuration (Base de données, variables globales...)
-├── public/             # Fichiers accessibles publiquement
-│   ├── assets/         # Feuilles de style CSS
-│   └── js/             # Scripts JavaScript (fonctions globales et modules d'administration)
-├── src/                # Code source de l'application (MVC)
-│   ├── Controllers/    # Logique métier (traitement des requêtes client et admin)
-│   ├── Models/         # Interactions avec la base de données
-│   ├── Services/       # Services tiers (ex: Routeur, logs)
-│   └── Views/          # Fichiers de rendu HTML/PHP (templates des pages)
-├── database.sql        # Schéma de la base de données et données de base
-├── index.php           # Point d'entrée de l'application
-└── .env                # Fichier de variables d'environnement (exclu de Git)
-```
