@@ -1,0 +1,5 @@
+.env
+config/database.php
+config/config.php
+config/env.php
+config/

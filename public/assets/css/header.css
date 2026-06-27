@@ -1,0 +1,104 @@
+/* header.css */
+.main-header {
+    background-color: var(--charcoal, #2c3e50);
+    color: white;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 8px 8px 0 0;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.header-logo-group {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-logo {
+    font-weight: bold;
+    font-size: 1.2em;
+    text-transform: uppercase;
+    color: white !important;
+}
+
+.header-badge {
+    padding: 3px 8px;
+    border-radius: 12px;
+    font-size: 0.8em;
+    color: white;
+}
+
+.header-badge-visitor {
+    background-color: #7f8c8d;
+}
+
+.header-badge-admin {
+    background-color: #e74c3c;
+    font-weight: bold;
+}
+
+.header-badge-client {
+    background-color: #27ae60;
+    font-weight: bold;
+}
+
+.header-nav {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.header-nav a {
+    color: white !important;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.header-nav a:hover {
+    opacity: 0.85;
+}
+
+.header-nav a.link-connexion {
+    color: #3498db !important;
+    font-weight: bold;
+}
+
+.header-nav a.link-register {
+    background-color: #2980b9;
+    padding: 5px 10px;
+    border-radius: 4px;
+}
+
+.header-nav a.link-register:hover {
+    background-color: #1f618d;
+    opacity: 1;
+}
+
+.header-nav a.link-logout {
+    color: #e74c3c !important;
+    font-weight: bold;
+}
+
+.header-user-info {
+    color: #bdc3c7;
+    margin-right: 10px;
+    font-size: 0.9em;
+}
+
+/* Responsive adjustment */
+@media (max-width: 768px) {
+    .main-header {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 15px;
+    }
+    
+    .header-nav {
+        flex-wrap: wrap;
+        justify-content: flex-start;
+        gap: 10px 15px;
+    }
+}

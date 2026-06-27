@@ -1,0 +1,143 @@
+/* admin-dashboard.css */
+.container {
+    max-width: 1200px;
+    margin: auto;
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.tabs {
+    display: flex;
+    border-bottom: 2px solid #ddd;
+    margin-bottom: 20px;
+    gap: 5px;
+}
+
+.tab-link {
+    padding: 12px 20px;
+    text-decoration: none;
+    color: #555;
+    background: #e9ecef;
+    border-radius: 5px 5px 0 0;
+    font-weight: bold;
+}
+
+.tab-link.active {
+    background: #34495e;
+    color: white;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+th, td {
+    padding: 12px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background: #34495e;
+    color: white;
+}
+
+.btn {
+    padding: 6px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+}
+
+.btn-activate { background: #2ecc71; }
+.btn-deactivate { background: #e67e22; }
+.btn-delete { background: #e74c3c; }
+.btn-info { background: #3498db; }
+
+.filter-box {
+    background: #f8fafc;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    display: flex;
+    gap: 15px;
+    align-items: center;
+}
+
+.pagination {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 5px;
+}
+
+.pagination a {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    text-decoration: none;
+    color: #333;
+    border-radius: 4px;
+}
+
+.pagination a.active {
+    background: #34495e;
+    color: white;
+    border-color: #34495e;
+}
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.6);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: white;
+    padding: 20px;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 900px;
+    max-height: 85vh;
+    overflow-y: auto;
+    position: relative;
+}
+
+.close-modal {
+    position: absolute;
+    top: 15px;
+    right: 20px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: #e74c3c;
+    font-weight: bold;
+}
+
+.modal-filters {
+    display: flex;
+    gap: 10px;
+    background: #f4f6f9;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    flex-wrap: wrap;
+}
+
+.modal-filters input, .modal-filters select {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}

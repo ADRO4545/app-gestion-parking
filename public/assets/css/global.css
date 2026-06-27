@@ -1,0 +1,241 @@
+/* global.css */
+body {
+    font-family: sans-serif;
+    background: #f4f6f9;
+    padding: 40px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+label {
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: block;
+    color: #34495e;
+}
+
+.btn-send {
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.btn-send:hover {
+    background: #2980b9;
+}
+
+.alert {
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    display: none;
+    font-weight: bold;
+}
+
+.alert-error {
+    background: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}
+
+.alert-success {
+    background: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+/* ==========================================================================
+   VARIABLES DE COULEUR & CONFIGURATION
+   ========================================================================== */
+:root {
+    --charcoal: #454851;
+    /* Texte principal / Éléments sombres */
+    --forest: #73956f;
+    /* Couleur dominante (Headers, Boutons actifs) */
+    --medium-green: #7bae7f;
+    /* Accent / Hover (Survol) */
+    --light-green: #95d7ae;
+    /* Bordures / Séparateurs légers */
+    --bg-cream: #fceff9;
+    /* Fond du site */
+}
+
+/* ==========================================================================
+   RESET & RESPONSIVE BASE
+   ========================================================================== */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-cream);
+    color: var(--charcoal);
+    line-height: 1.6;
+    padding: 20px;
+}
+
+/* Conteneur principal qui centre le contenu et gère la largeur max */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+}
+
+/* ==========================================================================
+   TYPOGRAPHIE & LIENS
+   ========================================================================== */
+h1,
+h2,
+h3 {
+    color: var(--forest);
+    margin-bottom: 1rem;
+    font-weight: 600;
+}
+
+a {
+    color: var(--forest);
+    text-decoration: none;
+    transition: color 0.2s ease;
+}
+
+a:hover {
+    color: var(--medium-green);
+}
+
+/* ==========================================================================
+   BOUTONS
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    background-color: var(--forest);
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    text-align: center;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: var(--medium-green);
+    color: #ffffff;
+}
+
+/* ==========================================================================
+   FORMULAIRES (Connexion, Inscription, Ajout)
+   ========================================================================== */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 12px;
+    border: 2px solid var(--light-green);
+    border-radius: 6px;
+    background-color: #ffffff;
+    color: var(--charcoal);
+    font-size: 1rem;
+    transition: border-color 0.2s ease;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    outline: none;
+    border-color: var(--forest);
+}
+
+/* ==========================================================================
+   TABLEAUX RESPONSIVES (Idéal pour tes réservations de parking)
+   ========================================================================== */
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+    /* Active le scroll horizontal UNIQUEMENT sur petit écran si le tableau déborde */
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #ffffff;
+    min-width: 600px;
+    /* Évite que le tableau se ratatine trop sur mobile */
+}
+
+th,
+td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+th {
+    background-color: var(--forest);
+    color: #ffffff;
+    font-weight: 600;
+}
+
+tr:hover {
+    background-color: rgba(149, 215, 174, 0.15);
+    /* Utilise un dérivé transparent de ton vert clair */
+}
+
+/* ==========================================================================
+   CARTES / BLOCS (Dashboard / Infos de profil)
+   ========================================================================== */
+.card {
+    background-color: #ffffff;
+    padding: 20px;
+    border-radius: 8px;
+    border-left: 5px solid var(--forest);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   SYSTÈME DE GRILLE SIMPLE & RESPONSIVE (Flexbox)
+   ========================================================================== */
+/* Permet d'aligner des éléments (comme des cartes) côte à côte */
+.grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+/* Les enfants de .grid prendront toute la place disponible mais passeront 
+   automatiquement à la ligne s'ils font moins de 300px (parfait pour mobile) */
+.grid-item {
+    flex: 1 1 300px;
+}

@@ -1,0 +1,25 @@
+/* connexion.css */
+.box {
+    background: white;
+    padding: 30px;
+    max-width: 400px;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+#code_group {
+    display: none;
+    background: #e8f4f8;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 4px solid #3498db;
+}
+
+#verification_code {
+    font-size: 20px;
+    letter-spacing: 5px;
+    text-align: center;
+    font-weight: bold;
+}

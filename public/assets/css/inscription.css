@@ -1,0 +1,46 @@
+/* inscription.css */
+.box {
+    background: white;
+    padding: 30px;
+    max-width: 450px;
+    margin: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.btn-validate {
+    background: #bdc3c7;
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    cursor: not-allowed;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.btn-validate.active {
+    background: #2ecc71;
+    cursor: pointer;
+}
+
+.btn-validate.active:hover {
+    background: #27ae60;
+}
+
+#code_group {
+    display: none;
+    background: #e8f4f8;
+    padding: 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    border-left: 4px solid #3498db;
+}
+
+#verification_code {
+    font-size: 20px;
+    letter-spacing: 5px;
+    text-align: center;
+    font-weight: bold;
+}
