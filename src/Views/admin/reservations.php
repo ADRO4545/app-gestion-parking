@@ -14,14 +14,14 @@
         <option value="cancelled" <?= (isset($_GET['res_status']) && $_GET['res_status'] == 'cancelled') ? 'selected' : '' ?>>Annulée</option>
     </select>
 
-    <div style="display: flex; align-items: center; gap: 5px; background: white; padding: 5px 10px; border: 1px solid #ccc; border-radius: 4px;">
-        <label style="font-size: 0.85em; color: #555;">Du :</label>
+    <div class="filter-date-range">
+        <label>Du :</label>
         <input type="date" name="res_date_start" value="<?= htmlspecialchars($_GET['res_date_start'] ?? '') ?>">
-        <label style="font-size: 0.85em; color: #555;">Au :</label>
+        <label>Au :</label>
         <input type="date" name="res_date_end" value="<?= htmlspecialchars($_GET['res_date_end'] ?? '') ?>">
     </div>
 
-    <div style="display: flex; align-items: center; gap: 5px;">
+    <div class="filter-limit">
         <label>Afficher par :</label>
         <select name="limit" class="auto-submit">
             <option value="10" <?= (isset($limit) && $limit == 10) ? 'selected' : '' ?>>10</option>
@@ -32,7 +32,7 @@
     </div>
 
     <button type="submit" class="btn btn-info">Filtrer</button>
-    <a href="index.php?action=admin_dashboard&section=reservations" style="color:#e74c3c; text-decoration:none; font-size:0.9em;">Réinitialiser</a>
+    <a href="index.php?action=admin_dashboard&section=reservations" class="link-reset">Réinitialiser</a>
 </form>
 
 <table>
@@ -61,7 +61,7 @@
             </tr>
         <?php endforeach; ?>
     <?php else: ?>
-        <tr><td colspan="6" style="text-align:center;">Aucune réservation trouvée pour ces critères.</td></tr>
+        <tr class="table-empty"><td colspan="6">Aucune réservation trouvée pour ces critères.</td></tr>
     <?php endif; ?>
 </table>
 

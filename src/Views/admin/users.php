@@ -24,10 +24,10 @@
         <option value="banned" <?= (isset($_GET['user_status']) && $_GET['user_status'] == 'banned') ? 'selected' : '' ?>>Désactivé</option>
     </select>
 
-    <div style="display: flex; align-items: center; gap: 5px; background: white; padding: 5px 10px; border: 1px solid #ccc; border-radius: 4px;">
-        <label style="font-size: 0.85em; color: #555;">Inscrit entre :</label>
+    <div class="filter-date-range">
+        <label>Inscrit entre :</label>
         <input type="date" name="date_start" value="<?= htmlspecialchars($_GET['date_start'] ?? '') ?>">
-        <label style="font-size: 0.85em; color: #555;">et</label>
+        <label>et</label>
         <input type="date" name="date_end" value="<?= htmlspecialchars($_GET['date_end'] ?? '') ?>">
     </div>
 
@@ -38,7 +38,7 @@
     </select>
 
     <button type="submit" class="btn btn-info" id="submitFilterBtn">Appliquer les filtres</button>
-    <a href="index.php?action=admin_dashboard&section=users" style="color:#e74c3c; text-decoration:none; font-size:0.9em;">Réinitialiser</a>
+    <a href="index.php?action=admin_dashboard&section=users" class="link-reset">Réinitialiser</a>
 </form>
 
 <div id="usersTableContainer">
@@ -52,7 +52,7 @@
                 <td><?= date('d/m/Y', strtotime($u['created_at'])) ?></td>
                 <td><strong style="color: <?= $u['status'] === 'active' ? '#2ecc71' : '#e74c3c' ?>;"><?= ucfirst($u['status']) ?></strong></td>
                 <td>
-                    <div style="display:flex; gap:5px;">
+                    <div class="table-actions">
                         <form method="POST" action="index.php?action=admin_dashboard&section=users&sub_action=<?= $u['status'] === 'active' ? 'deactivate' : 'activate' ?>">
                             <input type="hidden" name="user_id" value="<?= $u['id'] ?>">
                             <button type="submit" class="btn <?= $u['status'] === 'active' ? 'btn-deactivate' : 'btn-activate' ?>">
@@ -78,13 +78,13 @@
         <span class="close-modal" id="closeModal">&times;</span>
         <h3 id="modalTitle">Historique de l'utilisateur</h3>
         
-        <div class="modal-filters" style="align-items: center;">
+        <div class="modal-filters">
             <input type="text" id="filterSpot" placeholder="N° Place (ex: A1)">
             
-            <div style="display: flex; align-items: center; gap: 5px; background: white; padding: 5px; border: 1px solid #ccc; border-radius: 4px;">
-                <label style="font-size: 0.85em; color: #555;">Réservé du :</label>
+            <div class="filter-date-range">
+                <label>Réservé du :</label>
                 <input type="date" id="filterDateStart">
-                <label style="font-size: 0.85em; color: #555;">au :</label>
+                <label>au :</label>
                 <input type="date" id="filterDateEnd">
             </div>
 
