@@ -1,202 +1,220 @@
-/* global.css */
-body {
-    font-family: sans-serif;
-    background: #f4f6f9;
-    padding: 40px;
-}
-
-input {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box;
-}
-
-label {
-    font-weight: bold;
-    margin-bottom: 5px;
-    display: block;
-    color: #34495e;
-}
-
-.btn-send {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 12px;
-    width: 100%;
-    cursor: pointer;
-    font-weight: bold;
-    border-radius: 4px;
-    transition: background-color 0.2s;
-}
-
-.btn-send:hover {
-    background: #2980b9;
-}
-
-.alert {
-    padding: 12px;
-    border-radius: 4px;
-    margin-bottom: 15px;
-    font-size: 0.9em;
-    display: none;
-    font-weight: bold;
-}
-
-.alert-error {
-    background: #f8d7da;
-    color: #721c24;
-    border: 1px solid #f5c6cb;
-}
-
-.alert-success {
-    background: #d4edda;
-    color: #155724;
-    border: 1px solid #c3e6cb;
-}
+/* global.css — Feuille de style commune à toutes les pages */
 
 /* ==========================================================================
    VARIABLES DE COULEUR & CONFIGURATION
    ========================================================================== */
 :root {
-    --charcoal: #454851;
-    /* Texte principal / Éléments sombres */
-    --forest: #73956f;
-    /* Couleur dominante (Headers, Boutons actifs) */
-    --medium-green: #7bae7f;
-    /* Accent / Hover (Survol) */
-    --light-green: #95d7ae;
-    /* Bordures / Séparateurs légers */
-    --bg-cream: #fceff9;
-    /* Fond du site */
+    /* Palette principale */
+    --forest:       #2c3e50;   /* Couleur dominante : headers, boutons */
+    --forest-light: #34495e;   /* Variante légèrement plus claire */
+    --green:        #2ecc71;   /* Vert succès / libre */
+    --green-dark:   #27ae60;   /* Vert hover */
+    --orange:       #f39c12;   /* Avertissement / en attente */
+    --red:          #e74c3c;   /* Erreur / suppression */
+    --red-dark:     #c0392b;   /* Rouge hover */
+    --blue:         #3498db;   /* Info / lien */
+    --blue-dark:    #2980b9;   /* Bleu hover */
+    --grey:         #bdc3c7;   /* Secondaire / désactivé */
+    --grey-dark:    #95a5a6;   /* Gris hover */
+    --muted:        #7f8c8d;   /* Texte atténué */
+
+    /* Fond & texte */
+    --bg:           #f4f6f9;
+    --bg-card:      #ffffff;
+    --text:         #2c3e50;
+    --border:       #e0e0e0;
+
+    /* Layout */
+    --header-h:     60px;
+    --border-radius: 8px;
+    --shadow:       0 4px 12px rgba(0, 0, 0, 0.07);
 }
 
 /* ==========================================================================
-   RESET & RESPONSIVE BASE
+   RESET
    ========================================================================== */
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
+/* ==========================================================================
+   BASE — Body
+   ========================================================================== */
 body {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-    background-color: var(--bg-cream);
-    color: var(--charcoal);
+    background-color: var(--bg);
+    color: var(--text);
     line-height: 1.6;
-    padding: 20px;
+    /* Pousse le contenu sous le header fixe */
+    padding-top: calc(var(--header-h) + 24px);
+    padding-bottom: 40px;
+    min-height: 100vh;
 }
 
-/* Conteneur principal qui centre le contenu et gère la largeur max */
+/* ==========================================================================
+   LAYOUT — Conteneurs
+   ========================================================================== */
+
+/* Wrapper principal centré (max 1200px) */
+.page-wrapper {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Alias pour la compatibilité admin/dashboard */
 .container {
     width: 100%;
     max-width: 1200px;
     margin: 0 auto;
-    padding: 0 15px;
+    padding: 0 20px;
+}
+
+/* Boîte centrée pour les formulaires (connexion, inscription, compte...) */
+.box {
+    background: var(--bg-card);
+    padding: 30px 35px;
+    max-width: 520px;
+    margin: 0 auto;
+    border-radius: var(--border-radius);
+    box-shadow: var(--shadow);
+}
+
+/* Le h2 dans une .box a un séparateur visuel */
+.box h2 {
+    margin-top: 0;
+    color: var(--forest);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 12px;
+    margin-bottom: 20px;
 }
 
 /* ==========================================================================
    TYPOGRAPHIE & LIENS
    ========================================================================== */
-h1,
-h2,
-h3 {
+h1, h2, h3, h4, h5, h6 {
     color: var(--forest);
-    margin-bottom: 1rem;
     font-weight: 600;
+    margin-bottom: 0.9rem;
 }
 
 a {
-    color: var(--forest);
+    color: var(--blue);
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 a:hover {
-    color: var(--medium-green);
+    color: var(--blue-dark);
+    text-decoration: underline;
 }
 
 /* ==========================================================================
-   BOUTONS
-   ========================================================================== */
-.btn {
-    display: inline-block;
-    background-color: var(--forest);
-    color: #ffffff;
-    padding: 10px 20px;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.2s ease;
-}
-
-.btn:hover {
-    background-color: var(--medium-green);
-    color: #ffffff;
-}
-
-/* ==========================================================================
-   FORMULAIRES (Connexion, Inscription, Ajout)
+   FORMULAIRES
    ========================================================================== */
 .form-group {
-    margin-bottom: 1.25rem;
+    margin-bottom: 1.1rem;
 }
 
 label {
     display: block;
-    margin-bottom: 0.5rem;
     font-weight: 500;
+    margin-bottom: 5px;
+    color: var(--forest-light);
 }
 
 input,
 select,
 textarea {
     width: 100%;
-    padding: 12px;
-    border: 2px solid var(--light-green);
+    padding: 10px 12px;
+    border: 1px solid var(--border);
     border-radius: 6px;
-    background-color: #ffffff;
-    color: var(--charcoal);
-    font-size: 1rem;
-    transition: border-color 0.2s ease;
+    background-color: var(--bg-card);
+    color: var(--text);
+    font-size: 0.95rem;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    margin-bottom: 0;
 }
 
 input:focus,
 select:focus,
 textarea:focus {
     outline: none;
-    border-color: var(--forest);
+    border-color: var(--blue);
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.12);
+}
+
+/* Bouton principal formulaire */
+.btn-send {
+    background: var(--blue);
+    color: white;
+    border: none;
+    padding: 12px;
+    width: 100%;
+    cursor: pointer;
+    font-weight: bold;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: background-color 0.2s ease;
+}
+
+.btn-send:hover {
+    background: var(--blue-dark);
 }
 
 /* ==========================================================================
-   TABLEAUX RESPONSIVES (Idéal pour tes réservations de parking)
+   ALERTES / MESSAGES
+   ========================================================================== */
+.alert {
+    padding: 12px 15px;
+    border-radius: 6px;
+    margin-bottom: 15px;
+    font-size: 0.9em;
+    font-weight: 600;
+    display: none;
+}
+
+.alert-error {
+    background: #fde8e8;
+    color: #922b2b;
+    border: 1px solid #f5b7b1;
+    display: block;
+}
+
+.alert-success {
+    background: #eafaf1;
+    color: #1e8449;
+    border: 1px solid #a9dfbf;
+    display: block;
+}
+
+/* ==========================================================================
+   TABLEAUX
    ========================================================================== */
 .table-responsive {
     width: 100%;
     overflow-x: auto;
-    /* Active le scroll horizontal UNIQUEMENT sur petit écran si le tableau déborde */
     margin: 20px 0;
-    border-radius: 8px;
+    border-radius: var(--border-radius);
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
 }
 
 table {
     width: 100%;
     border-collapse: collapse;
-    background-color: #ffffff;
-    min-width: 600px;
-    /* Évite que le tableau se ratatine trop sur mobile */
+    background-color: var(--bg-card);
+    margin-top: 12px;
 }
 
 th,
 td {
-    padding: 14px 16px;
+    padding: 12px 14px;
     text-align: left;
     border-bottom: 1px solid #f0f0f0;
 }
@@ -205,37 +223,230 @@ th {
     background-color: var(--forest);
     color: #ffffff;
     font-weight: 600;
+    font-size: 0.88em;
+    text-transform: uppercase;
+    letter-spacing: 0.4px;
 }
 
-tr:hover {
-    background-color: rgba(149, 215, 174, 0.15);
-    /* Utilise un dérivé transparent de ton vert clair */
+tr:hover td {
+    background-color: #f8fbff;
+}
+
+.table-empty td {
+    text-align: center;
+    padding: 30px;
+    color: var(--muted);
+    font-style: italic;
 }
 
 /* ==========================================================================
-   CARTES / BLOCS (Dashboard / Infos de profil)
+   BOUTONS — Système complet
+   ========================================================================== */
+.btn {
+    display: inline-block;
+    padding: 8px 14px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.2s ease, opacity 0.2s ease;
+}
+
+.btn:hover {
+    opacity: 0.88;
+    text-decoration: none;
+    color: white;
+}
+
+/* Variantes de couleur */
+.btn-primary   { background-color: var(--blue);         color: white; }
+.btn-primary:hover   { background-color: var(--blue-dark); }
+.btn-success   { background-color: var(--green);        color: white; }
+.btn-success:hover   { background-color: var(--green-dark); }
+.btn-warning   { background-color: var(--orange);       color: white; }
+.btn-warning:hover   { background-color: #e67e22; }
+.btn-danger    { background-color: var(--red);          color: white; }
+.btn-danger:hover    { background-color: var(--red-dark); }
+.btn-secondary { background-color: var(--grey);         color: white; }
+.btn-secondary:hover { background-color: var(--grey-dark); }
+.btn-dark      { background-color: var(--forest);       color: white; }
+.btn-dark:hover      { background-color: var(--forest-light); }
+
+/* Variantes de taille */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.85em;
+    border-radius: 4px;
+}
+
+.btn-block {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+/* ==========================================================================
+   STATUTS — Couleurs sémantiques
+   ========================================================================== */
+.status-active,
+.status-confirmed,
+.status-free,
+.status-completed,
+.status-success   { color: var(--green); }
+
+.status-banned,
+.status-cancelled,
+.status-occupied,
+.status-failed,
+.status-error     { color: var(--red); }
+
+.status-pending   { color: var(--orange); }
+.status-maintenance { color: var(--orange); }
+
+/* ==========================================================================
+   MODALES
+   ========================================================================== */
+.modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.6);
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+}
+
+.modal-box {
+    background: var(--bg-card);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    width: 90%;
+    max-width: 420px;
+    position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.2);
+}
+
+.modal-box-center {
+    text-align: center;
+}
+
+.modal-title {
+    margin-top: 0;
+    color: var(--forest);
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 10px;
+    margin-bottom: 18px;
+}
+
+.close-btn {
+    position: absolute;
+    top: 14px;
+    right: 18px;
+    font-size: 1.5em;
+    cursor: pointer;
+    color: var(--red);
+    font-weight: bold;
+    line-height: 1;
+    background: none;
+    border: none;
+    padding: 0;
+}
+
+.close-btn:hover {
+    color: var(--red-dark);
+}
+
+/* ==========================================================================
+   UTILITAIRES LAYOUT
+   ========================================================================== */
+.flex-row-gap-5  { display: flex; gap: 5px;  }
+.flex-row-gap-10 { display: flex; gap: 10px; }
+.flex-row-gap-15 { display: flex; gap: 15px; }
+.flex-1          { flex: 1; }
+
+.margin-bottom-15 { margin-bottom: 15px; }
+.margin-bottom-25 { margin-bottom: 25px; }
+
+.text-center  { text-align: center; }
+.text-muted   { color: var(--muted); }
+.text-success { color: var(--green); }
+.text-danger  { color: var(--red); }
+.text-capitalize { text-transform: capitalize; }
+
+/* ==========================================================================
+   LIENS SPÉCIAUX
+   ========================================================================== */
+.box-footer-link {
+    text-align: center;
+    margin-top: 20px;
+}
+
+.box-footer-link a {
+    color: var(--blue);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.box-footer-link a:hover {
+    text-decoration: underline;
+    color: var(--blue-dark);
+}
+
+.link-reset {
+    color: var(--red);
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 500;
+}
+
+.link-reset:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   CARTES
    ========================================================================== */
 .card {
-    background-color: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
+    background-color: var(--bg-card);
+    padding: 22px;
+    border-radius: var(--border-radius);
     border-left: 5px solid var(--forest);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    box-shadow: var(--shadow);
     margin-bottom: 20px;
 }
 
-/* ==========================================================================
-   SYSTÈME DE GRILLE SIMPLE & RESPONSIVE (Flexbox)
-   ========================================================================== */
-/* Permet d'aligner des éléments (comme des cartes) côte à côte */
 .grid {
     display: flex;
     flex-wrap: wrap;
     gap: 20px;
 }
 
-/* Les enfants de .grid prendront toute la place disponible mais passeront 
-   automatiquement à la ligne s'ils font moins de 300px (parfait pour mobile) */
 .grid-item {
-    flex: 1 1 300px;
+    flex: 1 1 280px;
+}
+
+/* ==========================================================================
+   RESPONSIVE
+   ========================================================================== */
+@media (max-width: 768px) {
+    body {
+        padding-top: calc(var(--header-h) + 16px);
+        padding-bottom: 30px;
+    }
+
+    .box {
+        padding: 22px 16px;
+    }
+
+    .page-wrapper,
+    .container {
+        padding: 0 12px;
+    }
 }

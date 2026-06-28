@@ -13,7 +13,10 @@ CREATE TABLE users (
     status ENUM('active', 'banned') DEFAULT 'active',
     payment_preferences VARCHAR(255),
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    FOREIGN KEY (role_id) REFERENCES roles(id)
+    FOREIGN KEY (role_id) REFERENCES roles(id),
+    is_verified BOOLEAN DEFAULT FALSE,
+    verification_code VARCHAR(6) NULL,
+    code_expires_at TIMESTAMP NULL
 );
 
 CREATE TABLE parking_spot_types (
@@ -49,7 +52,8 @@ CREATE TABLE reservations (
     status ENUM('pending', 'confirmed', 'cancelled') DEFAULT 'pending',
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE,
-    FOREIGN KEY (spot_id) REFERENCES parking_spots(id)
+    FOREIGN KEY (spot_id) REFERENCES parking_spots(id),
+    reservation_number VARCHAR(20) UNIQUE
 );
 
 CREATE TABLE payments (
@@ -59,7 +63,8 @@ CREATE TABLE payments (
     payment_method ENUM('card', 'paypal'),
     status ENUM('pending', 'completed', 'failed') DEFAULT 'pending',
     paid_at TIMESTAMP NULL,
-    FOREIGN KEY (reservation_id) REFERENCES reservations(id) ON DELETE CASCADE
+    FOREIGN KEY (reservation_id) REFERENCES reservations(id) ON DELETE CASCADE,
+    transaction_id VARCHAR(100) NULL,
 );
 
 CREATE TABLE notifications (
@@ -93,17 +98,3 @@ INSERT INTO tarifs (spot_type_id, time_period, hourly_rate, max_duration_hours) 
 (1, 'Week-end', 3.00, 48),
 (2, 'Journée', 1.50, 24),
 (3, 'Journée', 4.00, 24);
-
-
--- 1. Ajout des colonnes pour la vérification d'email
-ALTER TABLE users 
-ADD COLUMN is_verified BOOLEAN DEFAULT FALSE,
-ADD COLUMN verification_code VARCHAR(6) NULL,
-ADD COLUMN code_expires_at TIMESTAMP NULL;
-
--- 2. Amélioration de la table des paiements (ajout d'une référence de transaction)
-ALTER TABLE payments 
-ADD COLUMN transaction_id VARCHAR(100) NULL AFTER payment_method;
-
-
-ALTER TABLE reservations ADD COLUMN reservation_number VARCHAR(20) UNIQUE AFTER id;

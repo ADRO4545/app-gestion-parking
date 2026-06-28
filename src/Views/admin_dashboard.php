@@ -8,8 +8,9 @@
 </head>
 <body>
 
+<?php require_once __DIR__ . '/partials/header.php'; ?>
+<div class="page-wrapper">
 <div class="container">
-    <?php require_once __DIR__ . '/partials/header.php'; ?>
 
     <div class="tabs">
         <a href="index.php?action=admin_dashboard&section=users" class="tab-link <?= $section === 'users' ? 'active' : '' ?>">Utilisateurs</a>
@@ -33,7 +34,8 @@
     }
     ?>
 
-</div> 
+</div>
+</div>
 <script src="public/js/admin-dashboard.js" defer></script>
 <script type="module" src="public/js/admin/app.js"></script>
 <?php require_once __DIR__ . '/partials/footer.php'; ?>

@@ -3,7 +3,7 @@
 <div class="admin-section-layout">
     
     <div class="admin-section-main">
-        <form method="GET" action="index.php" class="filter-box" style="gap: 10px;">
+        <form method="GET" action="index.php" class="filter-box">
             <input type="hidden" name="action" value="admin_dashboard">
             <input type="hidden" name="section" value="spots">
             
@@ -45,10 +45,10 @@
                     <td>
                         <?php 
                         $displayStatus = $spot['computed_status'] ?? $spot['status'];
-                        $color = $displayStatus === 'free' ? '#2ecc71' : ($displayStatus === 'occupied' ? '#e74c3c' : '#f39c12');
+                        $statusClass = 'status-' . $displayStatus;
                         $label = $displayStatus === 'free' ? 'Libre' : ($displayStatus === 'occupied' ? 'Réservée / Occupée' : 'Maintenance');
                         ?>
-                        <strong style="color: <?= $color ?>;"><?= $label ?></strong>
+                        <strong class="<?= $statusClass ?>"><?= $label ?></strong>
                     </td>
                     <td>
                         <div class="table-actions">

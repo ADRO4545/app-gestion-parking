@@ -1,14 +1,14 @@
 <h3>Rapport Financier & Historique des Paiements</h3>
 
 <div class="reports-stats">
-    <div class="stat-card stat-card--green">
-        <h4>Revenus Générés (Validés)</h4>
-        <p><?= number_format($financialStats['total_revenue'] ?? 0, 2, ',', ' ') ?> €</p>
+    <div class="report-stat-item">
+        <span class="report-stat-label">Revenus Générés :</span>
+        <span class="report-stat-value report-stat-value--green"><?= number_format($financialStats['total_revenue'] ?? 0, 2, ',', ' ') ?> €</span>
     </div>
     
-    <div class="stat-card stat-card--blue">
-        <h4>Paiements Effectués</h4>
-        <p><?= (int)($financialStats['total_payments'] ?? 0) ?> <span>Transactions</span></p>
+    <div class="report-stat-item">
+        <span class="report-stat-label">Paiements Effectués :</span>
+        <span class="report-stat-value report-stat-value--blue"><?= (int)($financialStats['total_payments'] ?? 0) ?> Transactions</span>
     </div>
 </div>
 
@@ -39,10 +39,10 @@
                     <td><?= date('d/m/Y H:i', strtotime($pay['paid_at'])) ?></td>
                     <td>
                         <?php 
-                            $color = $pay['status'] === 'completed' ? '#2ecc71' : ($pay['status'] === 'failed' ? '#e74c3c' : '#f1c40f');
+                            $statusClass = 'status-' . $pay['status'];
                             $statusLabel = $pay['status'] === 'completed' ? 'Complété' : ucfirst($pay['status']);
                         ?>
-                        <strong style="color: <?= $color ?>;"><?= $statusLabel ?></strong>
+                        <strong class="<?= $statusClass ?>"><?= $statusLabel ?></strong>
                     </td>
                 </tr>
             <?php endforeach; ?>

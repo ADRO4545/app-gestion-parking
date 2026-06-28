@@ -1,43 +1,44 @@
 /* inscription.css */
+
+/* Boîte légèrement plus étroite que la boîte par défaut (global.css .box = 520px) */
 .box {
-    background: white;
-    padding: 30px;
-    max-width: 450px;
-    margin: auto;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    max-width: 460px;
 }
 
+/* Le bouton de validation en deux états (inactif / actif) */
 .btn-validate {
-    background: #bdc3c7;
+    background: var(--grey, #bdc3c7);
     color: white;
     border: none;
     padding: 12px;
     width: 100%;
     cursor: not-allowed;
     font-weight: bold;
-    border-radius: 4px;
-    transition: background 0.3s;
+    border-radius: 6px;
+    transition: background 0.3s ease;
+    font-size: 1rem;
 }
 
 .btn-validate.active {
-    background: #2ecc71;
+    background: var(--green, #2ecc71);
     cursor: pointer;
 }
 
 .btn-validate.active:hover {
-    background: #27ae60;
+    background: var(--green-dark, #27ae60);
 }
 
+/* Zone du code de vérification — masquée jusqu'à la 2e étape */
 #code_group {
     display: none;
     background: #e8f4f8;
     padding: 15px;
     border-radius: 6px;
     margin-bottom: 15px;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid var(--blue, #3498db);
 }
 
+/* Le champ code de vérification */
 #verification_code {
     font-size: 20px;
     letter-spacing: 5px;

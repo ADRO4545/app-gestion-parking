@@ -7,8 +7,9 @@
     <link rel="stylesheet" href="public/assets/css/account.css">
 </head>
 <body>
+    <?php require_once __DIR__ . '/partials/header.php'; ?>
+    <div class="page-wrapper">
     <div class="box">
-        <?php require_once __DIR__ . '/partials/header.php'; ?>
 
         <h2>Gestion de mon profil</h2>
 
@@ -34,6 +35,7 @@
 
             <button type="submit" class="btn-send">Mettre à jour mes informations</button>
         </form>
+    </div>
     </div>
     <?php require_once __DIR__ . '/partials/footer.php'; ?>
 </body>

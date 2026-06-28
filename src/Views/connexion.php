@@ -8,10 +8,11 @@
 </head>
 <body>
     <?php require_once __DIR__ . '/partials/header.php'; ?>
+    <div class="page-wrapper">
     <div class="box">
-        <h2 style="margin-top:0; color:#2c3e50; border-bottom:2px solid #eee; padding-bottom:10px;">Se connecter</h2>
+        <h2>Se connecter</h2>
         
-        <?php if (!empty($erreur)) echo "<div class='alert alert-error' style='display:block;'>$erreur</div>"; ?>
+        <?php if (!empty($erreur)) echo "<div class='alert alert-error'>$erreur</div>"; ?>
         <div id="feedback" class="alert"></div>
         
         <form id="loginForm" method="POST" action="index.php?action=login">
@@ -30,9 +31,9 @@
             
             <button type="submit" id="actionBtn" class="btn-send">Vérifier mes identifiants</button>
         </form>
-        <p style="text-align:center; margin-top:20px;"><a href="index.php?action=register" style="color:#3498db; text-decoration:none; font-weight:bold;">Créer un compte</a></p>
+        <p class="box-footer-link"><a href="index.php?action=register">Créer un compte</a></p>
     </div>
-
+    </div>
     <script src="public/js/connexion.js" defer></script>
     <?php require_once __DIR__ . '/partials/footer.php'; ?>
 </body>

@@ -1,10 +1,10 @@
 <h3>Gestion globale des réservations</h3>
 
-<form method="GET" action="index.php" class="filter-box" style="flex-wrap: wrap;">
+<form method="GET" action="index.php" class="filter-box">
     <input type="hidden" name="action" value="admin_dashboard">
     <input type="hidden" name="section" value="reservations">
     
-    <input type="text" name="res_spot" placeholder="N° Place (ex: A1)" value="<?= htmlspecialchars($_GET['res_spot'] ?? '') ?>">
+    <input type="text" name="res_spot" placeholder="N° Place" value="<?= htmlspecialchars($_GET['res_spot'] ?? '') ?>">
     <input type="text" name="res_email" placeholder="Email Utilisateur" value="<?= htmlspecialchars($_GET['res_email'] ?? '') ?>">
     
     <select name="res_status">
@@ -54,9 +54,9 @@
                 <td><strong><?= number_format($r['total_price'], 2) ?> €</strong></td>
                 <td>
                     <?php 
-                        $color = $r['status'] == 'confirmed' ? '#2ecc71' : ($r['status'] == 'cancelled' ? '#e74c3c' : '#f1c40f');
+                        $statusClass = 'status-' . $r['status'];
                     ?>
-                    <strong style="color: <?= $color ?>;"><?= ucfirst($r['status']) ?></strong>
+                    <strong class="<?= $statusClass ?>"><?= ucfirst($r['status']) ?></strong>
                 </td>
             </tr>
         <?php endforeach; ?>

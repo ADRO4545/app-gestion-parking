@@ -1,133 +1,173 @@
-/* book.css */
+/* book.css — Page de réservation d'une place */
+
+/* ==========================================================================
+   CONTENEUR PRINCIPAL
+   ========================================================================== */
 .booking-container {
-    background: white;
-    padding: 30px;
-    max-width: 500px;
-    margin: 40px auto;
-    border-radius: 10px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    background: var(--bg-card, white);
+    padding: 30px 35px;
+    max-width: 520px;
+    margin: 0 auto;
+    border-radius: var(--border-radius, 8px);
+    box-shadow: var(--shadow, 0 4px 15px rgba(0, 0, 0, 0.1));
 }
 
+/* Titre de la page réservation */
 .header-title {
     margin-top: 0;
-    color: #2c3e50;
-    font-size: 24px;
-    border-bottom: 2px solid #eee;
-    padding-bottom: 15px;
-    margin-bottom: 25px;
+    color: var(--forest, #2c3e50);
+    font-size: 1.4rem;
+    border-bottom: 2px solid var(--border, #eee);
+    padding-bottom: 14px;
+    margin-bottom: 24px;
 }
 
-.form-group {
-    margin-bottom: 20px;
+/* ==========================================================================
+   FORMULAIRE — Surcharges spécifiques à la réservation
+   ========================================================================== */
+
+/* Champs de date/heure côte à côte */
+.flex-row-gap-10 {
+    display: flex;
+    gap: 10px;
 }
 
-input[type="datetime-local"], input[type="text"], input[type="date"], input[type="time"], input[type="password"] {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ced4da;
-    border-radius: 6px;
-    font-size: 16px;
-    box-sizing: border-box;
-    transition: 0.3s;
+.flex-row-gap-15 {
+    display: flex;
+    gap: 15px;
 }
 
-input[type="datetime-local"]:focus, input[type="text"]:focus, input[type="date"]:focus, input[type="time"]:focus, input[type="password"]:focus {
-    outline: none;
-    border-color: #3498db;
-    box-shadow: 0 0 5px rgba(52, 152, 219, 0.3);
+.flex-1 {
+    flex: 1;
+    min-width: 0;
 }
 
+/* Message d'erreur de validation JS */
 .error-input {
-    border-color: #e74c3c !important;
+    border-color: var(--red, #e74c3c) !important;
 }
 
 .error-msg {
-    color: #e74c3c;
+    color: var(--red, #e74c3c);
     font-size: 0.85em;
-    margin-top: 5px;
+    margin-top: 4px;
     display: none;
     font-weight: bold;
 }
 
+/* ==========================================================================
+   RÉCAPITULATIF TARIFAIRE
+   ========================================================================== */
 .feedback-box {
     background: #e8f4f8;
-    border-left: 4px solid #3498db;
+    border-left: 4px solid var(--blue, #3498db);
     padding: 15px;
     margin-bottom: 20px;
     border-radius: 4px;
-    font-size: 15px;
+    font-size: 0.95rem;
     display: none;
 }
 
+/* Libellé "Tarif :" etc. */
+.strong-dark {
+    color: var(--forest, #2c3e50);
+    font-weight: 600;
+}
+
+/* Prix affiché */
+.price-accent {
+    font-size: 1.2em;
+    color: var(--green, #2ecc71);
+    font-weight: bold;
+}
+
+/* Texte secondaire du récap */
+.font-weight-500 {
+    font-weight: 500;
+}
+
+/* Titre section paiement */
+.payment-section-title {
+    margin-top: 28px;
+    margin-bottom: 18px;
+    border-bottom: 2px solid var(--border, #eee);
+    padding-bottom: 10px;
+    color: var(--forest, #2c3e50);
+}
+
+/* ==========================================================================
+   BOUTON PAYER
+   ========================================================================== */
 .btn-submit {
-    background: #2ecc71;
+    background: var(--green, #2ecc71);
     color: white;
     border: none;
     padding: 14px;
     width: 100%;
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: bold;
     border-radius: 6px;
     cursor: pointer;
-    transition: background 0.3s;
+    transition: background-color 0.2s ease;
 }
 
 .btn-submit:hover {
-    background: #27ae60;
+    background: var(--green-dark, #27ae60);
 }
 
 .btn-submit:disabled {
-    background: #95a5a6;
+    background: var(--grey, #95a5a6);
     cursor: not-allowed;
+    opacity: 0.8;
 }
 
-/* Styles pour la modale de confirmation */
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.6);
-    align-items: center;
-    justify-content: center;
-    z-index: 1000;
+/* ==========================================================================
+   MODALE DE CONFIRMATION DE PAIEMENT
+   (modal-overlay et modal-box sont dans global.css)
+   ========================================================================== */
+
+/* Titre dans la modale de paiement */
+.modal-title {
+    margin-top: 0;
+    color: var(--forest, #2c3e50);
+    border-bottom: 2px solid var(--border, #eee);
+    padding-bottom: 10px;
+    margin-bottom: 16px;
 }
 
-.modal-box {
-    background: white;
-    padding: 30px;
-    border-radius: 8px;
-    width: 100%;
-    max-width: 400px;
-    text-align: center;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+/* Rangée de boutons de la modale */
+.modal-action-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 24px;
 }
 
+/* Boutons spécifiques à la modale de paiement */
 .btn-modal {
-    padding: 12px 20px;
+    padding: 11px 16px;
     border: none;
-    border-radius: 4px;
+    border-radius: 5px;
     cursor: pointer;
     font-weight: bold;
-    font-size: 1em;
+    font-size: 0.95rem;
     color: white;
-    width: 45%;
+    flex: 1;
+    transition: background-color 0.2s ease;
 }
 
 .btn-confirm {
-    background: #3498db;
+    background: var(--blue, #3498db);
 }
 
 .btn-confirm:hover {
-    background: #2980b9;
+    background: var(--blue-dark, #2980b9);
 }
 
 .btn-cancel {
-    background: #e74c3c;
+    background: var(--red, #e74c3c);
 }
 
 .btn-cancel:hover {
-    background: #c0392b;
+    background: var(--red-dark, #c0392b);
 }

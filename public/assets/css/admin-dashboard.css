@@ -1,93 +1,142 @@
-/* admin-dashboard.css */
-.container {
-    max-width: 1200px;
-    margin: auto;
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
+/* admin-dashboard.css — Styles spécifiques au dashboard administrateur */
 
+/* ==========================================================================
+   NAVIGATION ONGLETS
+   ========================================================================== */
 .tabs {
     display: flex;
     border-bottom: 2px solid #ddd;
     margin-bottom: 20px;
     gap: 5px;
+    flex-wrap: wrap;
 }
 
 .tab-link {
-    padding: 12px 20px;
+    padding: 10px 18px;
     text-decoration: none;
     color: #555;
     background: #e9ecef;
     border-radius: 5px 5px 0 0;
     font-weight: bold;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+.tab-link:hover {
+    background: #d0d4d9;
+    color: #333;
+    text-decoration: none;
 }
 
 .tab-link.active {
-    background: #34495e;
+    background: var(--forest, #2c3e50);
     color: white;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 15px;
-}
-
-th,
-td {
-    padding: 12px;
-    border-bottom: 1px solid #ddd;
-    text-align: left;
-}
-
-th {
-    background: #34495e;
-    color: white;
-}
-
-.btn {
-    padding: 6px 12px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    color: white;
-    text-decoration: none;
-    font-size: 0.9em;
-}
-
+/* ==========================================================================
+   BOUTONS SPÉCIFIQUES ADMIN
+   (les variantes .btn-primary/.btn-danger sont dans global.css)
+   ========================================================================== */
 .btn-activate {
-    background: #2ecc71;
+    background-color: var(--green, #2ecc71);
+    color: white;
+}
+
+.btn-activate:hover {
+    background-color: var(--green-dark, #27ae60);
 }
 
 .btn-deactivate {
-    background: #e67e22;
+    background-color: var(--orange, #e67e22);
+    color: white;
+}
+
+.btn-deactivate:hover {
+    background-color: #ca6f1e;
 }
 
 .btn-delete {
-    background: #e74c3c;
+    background-color: var(--red, #e74c3c);
+    color: white;
+}
+
+.btn-delete:hover {
+    background-color: var(--red-dark, #c0392b);
 }
 
 .btn-info {
-    background: #3498db;
+    background-color: var(--blue, #3498db);
+    color: white;
 }
 
+.btn-info:hover {
+    background-color: var(--blue-dark, #2980b9);
+}
+
+/* ==========================================================================
+   FILTRES
+   ========================================================================== */
 .filter-box {
     background: #f8fafc;
     padding: 15px;
     border-radius: 6px;
     margin-bottom: 15px;
     display: flex;
-    gap: 15px;
+    gap: 10px;
     align-items: center;
+    flex-wrap: wrap;
+    border: 1px solid #e2e8f0;
 }
 
+.filter-date-range {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    background: white;
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.filter-date-range label {
+    font-size: 0.85em;
+    color: #555;
+    white-space: nowrap;
+}
+
+.filter-limit {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.input-price-filter {
+    width: 100px;
+}
+
+/* ==========================================================================
+   TABLEAUX
+   (th/td/tr de base viennent de global.css, ici on surcharge si besoin)
+   ========================================================================== */
+.table-actions {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.form-inline {
+    display: inline;
+}
+
+/* ==========================================================================
+   PAGINATION
+   ========================================================================== */
 .pagination {
     margin-top: 20px;
     display: flex;
     justify-content: center;
     gap: 5px;
+    flex-wrap: wrap;
 }
 
 .pagination a {
@@ -96,27 +145,23 @@ th {
     text-decoration: none;
     color: #333;
     border-radius: 4px;
+    transition: background-color 0.2s;
+}
+
+.pagination a:hover {
+    background: #f0f0f0;
+    text-decoration: none;
 }
 
 .pagination a.active {
-    background: #34495e;
+    background: var(--forest, #2c3e50);
     color: white;
-    border-color: #34495e;
+    border-color: var(--forest, #2c3e50);
 }
 
-.modal-overlay {
-    display: none;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    z-index: 1000;
-    justify-content: center;
-    align-items: center;
-}
-
+/* ==========================================================================
+   MODALE HISTORIQUE (spécifique admin, grande taille)
+   ========================================================================== */
 .modal-content {
     background: white;
     padding: 20px;
@@ -126,6 +171,7 @@ th {
     max-height: 85vh;
     overflow-y: auto;
     position: relative;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.25);
 }
 
 .close-modal {
@@ -134,8 +180,16 @@ th {
     right: 20px;
     font-size: 1.5em;
     cursor: pointer;
-    color: #e74c3c;
+    color: var(--red, #e74c3c);
     font-weight: bold;
+    background: none;
+    border: none;
+    padding: 0;
+    line-height: 1;
+}
+
+.close-modal:hover {
+    color: var(--red-dark, #c0392b);
 }
 
 .modal-filters {
@@ -146,15 +200,12 @@ th {
     border-radius: 4px;
     margin-bottom: 15px;
     flex-wrap: wrap;
+    align-items: center;
 }
 
-.modal-filters input,
-.modal-filters select {
-    padding: 5px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
+/* ==========================================================================
+   LAYOUT ADMIN (Liste + Formulaire côte à côte)
+   ========================================================================== */
 .admin-section-layout {
     display: flex;
     gap: 25px;
@@ -164,28 +215,31 @@ th {
 
 .admin-section-main {
     flex: 2;
-    min-width: 600px;
+    min-width: 0;
 }
 
 .admin-section-sidebar {
     flex: 1;
-    min-width: 320px;
+    min-width: 300px;
     background: #f8fafc;
     padding: 20px;
     border-radius: 6px;
     border: 1px solid #e2e8f0;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.02);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
 }
 
 .admin-section-sidebar h4 {
     margin-top: 0;
     margin-bottom: 15px;
-    color: #2c3e50;
-    border-bottom: 2px solid #34495e;
+    color: var(--forest, #2c3e50);
+    border-bottom: 2px solid var(--forest-light, #34495e);
     padding-bottom: 8px;
-    font-size: 1.1em;
+    font-size: 1.05em;
 }
 
+/* ==========================================================================
+   FORMULAIRE ADMIN (dans la sidebar)
+   ========================================================================== */
 .admin-form-group {
     margin-bottom: 12px;
 }
@@ -208,26 +262,7 @@ th {
     padding: 8px;
     border: 1px solid #cbd5e1;
     border-radius: 4px;
-    box-sizing: border-box;
     background: white;
-}
-
-.btn-submit-full {
-    background: #2ecc71;
-    width: 100%;
-    padding: 10px;
-    font-weight: bold;
-    font-size: 0.95em;
-}
-
-.btn-cancel-full {
-    background: #7f8c8d;
-    display: block;
-    text-align: center;
-    margin-top: 8px;
-    padding: 8px;
-    font-weight: bold;
-    text-decoration: none;
 }
 
 .admin-form-row {
@@ -236,120 +271,49 @@ th {
     margin-bottom: 12px;
 }
 
-.admin-form-row>div {
+.admin-form-row > div {
     flex: 1;
 }
 
-.link-reset {
-    color: #e74c3c;
-    text-decoration: none;
-    font-size: 0.9em;
+.btn-submit-full {
+    background: var(--green, #2ecc71);
+    color: white;
+    width: 100%;
+    padding: 10px;
+    font-weight: bold;
+    font-size: 0.95em;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s;
 }
 
-.table-actions {
-    display: flex;
-    gap: 5px;
+.btn-submit-full:hover {
+    background: var(--green-dark, #27ae60);
 }
 
-.btn-sm {
-    padding: 5px 10px;
-    font-size: 0.85em;
-}
-
-.form-inline {
-    display: inline;
-}
-
-.filter-date-range {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-    background: white;
-    padding: 5px 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-}
-
-.filter-date-range label {
-    font-size: 0.85em;
-    color: #555;
-}
-
-.filter-limit {
-    display: flex;
-    align-items: center;
-    gap: 5px;
-}
-
-.table-empty td {
+.btn-cancel-full {
+    display: block;
     text-align: center;
-    padding: 20px;
-    color: #7f8c8d;
-}
-
-.reports-stats {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 30px;
-    flex-wrap: wrap;
-}
-
-.stat-card {
-    background: white;
-    padding: 25px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-    flex: 1;
-    min-width: 250px;
-}
-
-.stat-card h4 {
-    margin-top: 0;
-    color: #7f8c8d;
-    text-transform: uppercase;
-    font-size: 0.9em;
-}
-
-.stat-card p {
-    font-size: 2.2em;
+    margin-top: 8px;
+    padding: 8px;
     font-weight: bold;
-    color: #2c3e50;
-    margin: 10px 0 0 0;
+    text-decoration: none;
+    color: white;
+    background: var(--grey, #7f8c8d);
+    border-radius: 6px;
+    transition: background-color 0.2s;
 }
 
-.stat-card p span {
-    font-size: 0.5em;
-    color: #95a5a6;
+.btn-cancel-full:hover {
+    background: var(--grey-dark, #6c757d);
+    color: white;
+    text-decoration: none;
 }
 
-.stat-card--green {
-    border-left: 5px solid #2ecc71;
-}
-
-.stat-card--blue {
-    border-left: 5px solid #3498db;
-}
-
-.reports-table-wrapper {
-    overflow-x: auto;
-    background: white;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
-}
-
-.payment-method-badge {
-    background: #ecf0f1;
-    padding: 4px 8px;
-    border-radius: 4px;
-    font-size: 0.85em;
-    font-weight: bold;
-}
-
-.amount-positive {
-    color: #2ecc71;
-}
-
-
+/* ==========================================================================
+   SPOTS — Mode ajout multiple
+   ========================================================================== */
 #bulkSpotMode {
     display: none;
     margin-bottom: 12px;
@@ -364,7 +328,7 @@ th {
     gap: 10px;
 }
 
-.bulk-row>div {
+.bulk-row > div {
     flex: 1;
 }
 
@@ -372,5 +336,69 @@ th {
     padding: 8px;
     border: 1px solid #cbd5e1;
     border-radius: 4px;
-    max-width: 150px;
+    max-width: 160px;
+}
+
+/* ==========================================================================
+   RAPPORTS FINANCIERS
+   ========================================================================== */
+.reports-stats {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 30px;
+    flex-wrap: wrap;
+}
+
+.report-stat-item {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: #ffffff;
+    padding: 12px 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e2e8f0;
+}
+
+.report-stat-label {
+    font-weight: bold;
+    color: var(--forest, #2c3e50);
+}
+
+.report-stat-value {
+    display: inline-block;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+.report-stat-value--green {
+    background: #e8f8f5;
+    color: #27ae60;
+}
+
+.report-stat-value--blue {
+    background: #e8f4f8;
+    color: #2980b9;
+}
+
+.reports-table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.payment-method-badge {
+    background: #ecf0f1;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-size: 0.85em;
+    font-weight: bold;
+}
+
+.amount-positive {
+    color: var(--green, #2ecc71);
+    font-weight: bold;
 }

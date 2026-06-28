@@ -7,6 +7,10 @@ use App\Services\EmailService; // NOUVEAU
 class AuthController {
     
     public function login() {
+        if (isset($_SESSION['user_id'])) {
+            header('Location: index.php?action=dashboard');
+            exit();
+        }
         $erreur = "";
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];
@@ -99,6 +103,10 @@ class AuthController {
     }
 
     public function register() {
+        if (isset($_SESSION['user_id'])) {
+            header('Location: index.php?action=dashboard');
+            exit();
+        }
         $erreur = "";
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $email = $_POST['email'];

@@ -1,6 +1,6 @@
 <h3>Gestion des comptes</h3>
 
-<form method="GET" action="index.php" class="filter-box" id="filterForm" style="flex-wrap: wrap;">
+<form method="GET" action="index.php" class="filter-box" id="filterForm">
     <input type="hidden" name="action" value="admin_dashboard">
     <input type="hidden" name="section" value="users">
     
@@ -50,7 +50,7 @@
                 <td><?= htmlspecialchars($u['email']) ?></td>
                 <td><?= htmlspecialchars($u['role_name'] ?? 'Client') ?></td>
                 <td><?= date('d/m/Y', strtotime($u['created_at'])) ?></td>
-                <td><strong style="color: <?= $u['status'] === 'active' ? '#2ecc71' : '#e74c3c' ?>;"><?= ucfirst($u['status']) ?></strong></td>
+                <td><strong class="status-<?= $u['status'] ?>"><?= ucfirst($u['status']) ?></strong></td>
                 <td>
                     <div class="table-actions">
                         <form method="POST" action="index.php?action=admin_dashboard&section=users&sub_action=<?= $u['status'] === 'active' ? 'deactivate' : 'activate' ?>">
@@ -79,7 +79,7 @@
         <h3 id="modalTitle">Historique de l'utilisateur</h3>
         
         <div class="modal-filters">
-            <input type="text" id="filterSpot" placeholder="N° Place (ex: A1)">
+            <input type="text" id="filterSpot" placeholder="N° Place">
             
             <div class="filter-date-range">
                 <label>Réservé du :</label>
@@ -88,8 +88,8 @@
                 <input type="date" id="filterDateEnd">
             </div>
 
-            <input type="number" id="filterPriceMin" placeholder="Prix Min (€)" style="width: 100px;">
-            <input type="number" id="filterPriceMax" placeholder="Prix Max (€)" style="width: 100px;">
+            <input type="number" id="filterPriceMin" placeholder="Prix Min (€)" class="input-price-filter">
+            <input type="number" id="filterPriceMax" placeholder="Prix Max (€)" class="input-price-filter">
             <select id="filterStatus">
                 <option value="">Tous les statuts</option>
                 <option value="pending">Pending</option>

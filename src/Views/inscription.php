@@ -8,10 +8,11 @@
 </head>
 <body>
     <?php require_once __DIR__ . '/partials/header.php'; ?>
+    <div class="page-wrapper">
     <div class="box">
-        <h2 style="margin-top:0; color:#2c3e50; border-bottom:2px solid #eee; padding-bottom:10px;">Créer un compte</h2>
+        <h2>Créer un compte</h2>
         
-        <?php if (!empty($erreur)) echo "<div class='alert alert-error' style='display:block;'>$erreur</div>"; ?>
+        <?php if (!empty($erreur)) echo "<div class='alert alert-error'>$erreur</div>"; ?>
         <div id="feedback" class="alert"></div>
         
         <form id="registerForm" method="POST" action="index.php?action=register">
@@ -37,9 +38,9 @@
             
             <button type="submit" id="actionBtn" class="btn-send">Valider</button>
         </form>
-        <p style="text-align:center; margin-top:20px;"><a href="index.php?action=login" style="color:#3498db; text-decoration:none; font-weight:bold;">Déjà inscrit ? Connexion</a></p>
+        <p class="box-footer-link"><a href="index.php?action=login">Déjà inscrit ? Connexion</a></p>
     </div>
-
+    </div>
     <script src="public/js/inscription.js" defer></script>
     <?php require_once __DIR__ . '/partials/footer.php'; ?>
 </body>

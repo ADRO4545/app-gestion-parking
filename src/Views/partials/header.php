@@ -2,7 +2,7 @@
 
 <header class="main-header">
     <div class="header-logo-group">
-        <div class="header-logo">Parking</div>
+        <div class="header-logo"><a href="index.php">Parking</a></div>
         
         <!-- Badge indiquant le rôle -->
         <?php if (!isset($_SESSION['user_id'])): ?>
@@ -22,14 +22,14 @@
         
         <!-- Liens pour les Administrateurs (role_id = 2) -->
         <?php elseif (isset($_SESSION['role_id']) && $_SESSION['role_id'] == 2): ?>
-            <span class="header-user-info">👤 <?= htmlspecialchars($_SESSION['user_name'] ?? 'Admin') ?></span>
+            <span class="header-user-info"><?= htmlspecialchars($_SESSION['user_name'] ?? 'Admin') ?></span>
             <a href="index.php?action=admin_dashboard">Dashboard Admin</a>
             <a href="index.php?action=account">Mon Compte</a>
             <a href="index.php?action=logout" class="link-logout">Déconnexion</a>
         
         <!-- Liens pour les Clients (role_id = 1) -->
         <?php else: ?>
-            <span class="header-user-info">👤 <?= htmlspecialchars($_SESSION['user_name'] ?? 'Client') ?></span>
+            <span class="header-user-info"><?= htmlspecialchars($_SESSION['user_name'] ?? 'Client') ?></span>
             <a href="index.php?action=dashboard">Réserver une place</a>
             <a href="index.php?action=my_reservations">Mes Réservations</a>
             <a href="index.php?action=account">Mon Compte</a>
